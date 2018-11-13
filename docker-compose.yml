@@ -9,7 +9,7 @@ services:
       api-internal:
 
   api:
-    image: dockersamples/product-api:latest
+    image: dockersamples/product-api:1
     build:
       context: .
     ports:
