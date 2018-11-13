@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  redis-store:
+    image: redis:alpine
+    container_name: redis
+    ports: ["6379"]
+    networks:
+      api-internal:
+
+  api:
+    image: dockersamples/product-api:latest
+    build:
+      context: .
+    ports:
+      - "8080:5000"
+    networks:
+      api-external:
+      api-internal:
+
+networks:
+  api-external:
+  api-internal:
