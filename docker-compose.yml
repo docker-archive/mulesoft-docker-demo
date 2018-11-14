@@ -1,9 +1,8 @@
-version: "3"
+version: "3.7"
 
 services:
   redis-store:
     image: redis:alpine
-    container_name: redis
     ports: ["6379"]
     networks:
       api-internal:

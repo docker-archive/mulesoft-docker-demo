@@ -1,19 +1,22 @@
-from flask import Flask, request, send_from_directory, jsonify
-from flask_redis import FlaskRedis
+from flask import Flask, request, send_from_directory,jsonify
+import json
+import redis
+import os
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-app.config["REDIS_URL"] = "redis://redis-store:6379"
+redis_port = "6379"
 app.config["JSONIFY_MIMETYPE"] = "application/json'"
-redis_store = FlaskRedis(app)
+redis_store = redis.Redis(host='redis-store', port=redis_port)
 
 # Returns all our products
 @app.route('/api/products', methods=['GET'])
 def api_all():
     try:
       if redis_store.exists('products'):
-        products = redis_store.get('products')
-        return jsonify("products")
+        products = json.loads(redis_store.get('products'))
+        app.logger.error(products)
+        return jsonify(products)
       else:
         products = app.open_resource('static/api-sample.json','r').read()
         redis_store.set('products',products)
