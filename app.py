@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 app.config["DEBUG"] = True
 redis_port = "6379"
-app.config["JSONIFY_MIMETYPE"] = "application/json'"
+app.config["JSONIFY_MIMETYPE"] = "application/json"
 redis_store = redis.Redis(host='redis-store', port=redis_port)
 
 # Returns all our products
