@@ -10,12 +10,12 @@ app.config["JSONIFY_MIMETYPE"] = "application/json"
 redis_store = redis.Redis(host='redis-store', port=redis_port)
 
 # Returns all our products
-@app.route('/api/products', methods=['GET'])
+@app.route('/products', methods=['GET'])
 def api_all():
     try:
       if redis_store.exists('products'):
         products = json.loads(redis_store.get('products'))
-        app.logger.error(products)
+        app.logger.info('%s cache hit', products)
         return jsonify(products)
       else:
         products = app.open_resource('static/api-sample.json','r').read()
