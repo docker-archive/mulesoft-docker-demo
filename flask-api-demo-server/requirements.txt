@@ -1,3 +1,5 @@
 Flask
 flask_redis
 redis_cache_decorator
+redis
+ptvsd
