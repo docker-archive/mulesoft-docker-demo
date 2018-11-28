@@ -3,7 +3,7 @@ version: '3.3'
 services:
   
   petshop-db:
-    image: sixeyed/petshop-db
+    image: dockersamples/petshop-db
     networks:
       - app-net
     deploy:
@@ -13,7 +13,7 @@ services:
         - node.platform.os == windows
 
   petshop-web:
-    image: sixeyed/petshop-web
+    image: dockersamples/petshop-web
     ports:
       - mode: host
         target: 80
@@ -29,7 +29,7 @@ services:
         - node.platform.os == windows
 
   petshop-webservice:
-    image: sixeyed/petshop-webservice
+    image: dockersamples/petshop-webservice
     ports:
       - mode: host
         target: 80

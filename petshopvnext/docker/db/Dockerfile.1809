@@ -1,8 +1,7 @@
 # escape=`
-FROM sixeyed/sql-server:2017-windowsservercore-1809
+FROM dockersamples/sql-server:2017-windowsservercore-ltsc2019
 
-ENV ACCEPT_EULA="Y" `
-    sa_password="DockerCon!!!"
+ENV sa_password="DockerCon!!!"
 
 COPY ./database/DatabaseScripts/ .
 RUN ./InstallDatabases.cmd
