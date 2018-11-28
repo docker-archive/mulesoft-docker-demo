@@ -1,0 +1,29 @@
+version: "3.2"
+
+services:
+  redis-store:
+    image: redis:alpine
+    networks:
+      api-internal:
+    deploy:     
+      placement:
+        constraints:
+        - node.platform.os == linux
+
+  api:
+    image: dockersamples/product-api:1
+    build:
+      context: .
+    ports:
+      - "9080:5000"
+    networks:
+      api-external:
+      api-internal:
+    deploy:    
+      placement:
+        constraints:
+        - node.platform.os == linux
+
+networks:
+  api-external:
+  api-internal:
