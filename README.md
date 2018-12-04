@@ -31,4 +31,4 @@ Autoscaling and other microservices patterns (bounded contexts, independent depl
 
 <B>Code location<B>
 
-Docker code in this repo, Mulesoft code in [https://github.com/darrinsolomon/dockercon][https://github.com/darrinsolomon/dockercon]
+Docker code in this repo, Mulesoft code in https://github.com/darrinsolomon/dockercon
